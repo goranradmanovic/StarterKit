@@ -3,7 +3,7 @@ StarterKit for fast frontend development
 
 ## Directory structure
 
-
+```
 root/
 	production/
 		public/
@@ -52,7 +52,7 @@ root/
 			index.jade
 		views/
 			*jade
-
+```
 
 ### Gulp packages (manual install in the terminal)
 
@@ -81,7 +81,7 @@ $ gulp
 ```
 ### File browser optimzation
 
-This will minify and all optimize images.
+This will minify and optimize all images.
 
 ```shell
 $ gulp compress
