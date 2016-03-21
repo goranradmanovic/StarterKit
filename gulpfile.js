@@ -83,6 +83,13 @@ gulp.task('concatJS', function () {
 				.pipe(browserSync.reload({stream: true}));
 });
 
+//Copy JS files (Using when working with AngularJs)
+gulp.task('copyJS', function () {
+	return gulp.src(config.jsSRC)
+				.pipe(plumber())
+				.pipe(gulp.dest(config.jsDEST));
+});
+
 //Compressing images
 gulp.task('imagemin', function () {
 	return gulp.src(config.imageSRC)
