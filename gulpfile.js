@@ -6,7 +6,7 @@ var config = require('./gulp/paths');
 
 //Gulp packages
 var gulp = require('gulp'),
-	plumber = require('plumber'),
+	plumber = require('gulp-plumber'),
 	sass = require('gulp-sass'),
 	autoprefix = require('gulp-autoprefixer'),
 	jade = require('gulp-jade'),
