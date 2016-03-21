@@ -10,11 +10,16 @@ html(lang='en')
 		meta(name='author', content='')
 		meta(name='robots', content='index, fallow, all')
 		meta(name='keywords', content='')
-		title StarterKit App
+		title Positive Cashflow Finance
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
 		link(rel='stylesheet', href='../assets/css/style.css')
 	body
+		.container
+			include jade/header.jade
+			include jade/business.jade
+			include jade/directors.jade
+			include jade/financial.jade
+			include jade/notice.jade
+			include jade/declaration.jade
 
-		//-Example
-		p Hello World
-
-		script(src='../assets/js/main.min.js')
+		script(src='')

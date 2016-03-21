@@ -6,6 +6,7 @@ var config = require('./gulp/paths');
 
 //Gulp packages
 var gulp = require('gulp'),
+	plumber = require('plumber'),
 	sass = require('gulp-sass'),
 	autoprefix = require('gulp-autoprefixer'),
 	jade = require('gulp-jade'),
@@ -17,10 +18,12 @@ var gulp = require('gulp'),
 /******************* Gulp Tasks **********************/
 
 //Function for handling errors and allowing Gulp to run with out stoping
+/*
 function errorLog(error) {
 	console.error.bind(error);
 	this.emit('end');
 }
+*/
 
 //BrowserSync task
 gulp.task('browser-sync', function () {
@@ -31,9 +34,10 @@ gulp.task('browser-sync', function () {
 gulp.task('sass', function () {
 	return gulp.src(config.sassSRC)
 				//.pipe(sass({outputStyle: 'compressed'})) //Compressing output css file
+				.pipe(plumber())
 				.pipe(sass())							  //Not Compressing output css file
 				.pipe(autoprefix())
-				.on('error', errorLog)
+				//.on('error', errorLog) //Output error with out plumber plugin
 				.pipe(gulp.dest(config.cssDEST))
 				.pipe(browserSync.reload({stream: true}));
 });
@@ -41,8 +45,9 @@ gulp.task('sass', function () {
 //Jade task
 gulp.task('jade', ['jade-public','jade-views'], function () {
 	return gulp.src(config.jadeSRC)
+				.pipe(plumber())
 				.pipe(jade({pretty: true}))
-				.on('error', errorLog)
+				//.on('error', errorLog) //Output error with out plumber plugi
 				.pipe(gulp.dest(config.jadeDEST))
 				.pipe(browserSync.reload({stream: true}));
 });
@@ -50,8 +55,9 @@ gulp.task('jade', ['jade-public','jade-views'], function () {
 //Jade public
 gulp.task('jade-public', function () {
 	return gulp.src(config.jadePublicSRC)
+				.pipe(plumber())
 				.pipe(jade({pretty: true}))
-				.on('error', errorLog)
+				//.on('error', errorLog) //Output error with out plumber plugi)
 				.pipe(gulp.dest(config.jadePublicDEST))
 				.pipe(browserSync.reload({stream: true}));
 });
@@ -59,8 +65,9 @@ gulp.task('jade-public', function () {
 //Jade views
 gulp.task('jade-views', ['jade-public'], function () {
 	return gulp.src(config.jadeViewSRC)
+				.pipe(plumber())
 				.pipe(jade({pretty: true}))
-				.on('error', errorLog)
+				//.on('error', errorLog) //Output error with out plumber plugi)
 				.pipe(gulp.dest(config.jadeViewDEST))
 				.pipe(browserSync.reload({stream: true}));
 });
@@ -68,9 +75,10 @@ gulp.task('jade-views', ['jade-public'], function () {
 //JavaScrip task (concatination & minifying)
 gulp.task('concatJS', function () {
 	return gulp.src(config.jsSRC)
+				.pipe(plumber())
 				.pipe(concat('main.min.js'))
 				.pipe(uglify())
-				.on('error', errorLog)
+				//.on('error', errorLog) //Output error with out plumber plugi
 				.pipe(gulp.dest(config.jsDEST))
 				.pipe(browserSync.reload({stream: true}));
 });
@@ -78,8 +86,9 @@ gulp.task('concatJS', function () {
 //Compressing images
 gulp.task('imagemin', function () {
 	return gulp.src(config.imageSRC)
+				.pipe(plumber())
 				.pipe(imagemin({progressive: true, optimizationLevel: 7}))
-				.on('error', errorLog)
+				//.on('error', errorLog) //Output error with out plumber plugi
 				.pipe(gulp.dest(config.imageDEST));
 });
 

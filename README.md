@@ -84,5 +84,5 @@ $ gulp
 This will minify and optimize all images.
 
 ```shell
-$ gulp compress
+$ gulp imagemin
 ```

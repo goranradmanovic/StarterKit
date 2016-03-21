@@ -1,3 +1,15 @@
 =child($n) 
 	&:nth-child(#{$n})
 		background-color: red
+
+/*Elements SCSS mixin koji nam mijenja &__ tako da to ne moramo uvjek pisati,ovu funk. mozemo nazvati i elements*/
+/*Mixin se u SASSU definira pomocu '=',a u SCSS sa @mixin*/
+=element($element)
+	&__#{$element}
+		@content
+
+/*Modifier -- SCSS mixin koji nam mijenja &-- tako da to ne moramo uvjek pisati,ovu funk. mozemo nazvati i elements*/
+
+=modifier($modifier)
+	&--#{$modifier}
+		@content
