@@ -113,6 +113,8 @@ gulp.task('watch', function () {
 	gulp.watch(config.jadePublicSRC, ['jade-public']);
 	gulp.watch(config.jadeViewSRC, ['jade-views']);
 	gulp.watch(config.jsSRC, ['concatJS']);
+	gulp.watch(config.jsSRC, ['copyJS']);
+	gulp.watch(config.dataSRC, ['copyData']);
 });
 
 //Default task
