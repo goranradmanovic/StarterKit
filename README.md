@@ -19,6 +19,7 @@ root/
 				*.jpg, *.jpeg, *.png, *.gif, *.ico .ect
 			icons/
 				*.svg
+			data/*json
 	gulp/
 		*.js
 	src/
@@ -52,6 +53,7 @@ root/
 			index.jade
 		views/
 			*jade
+		data/*json
 ```
 
 ### Gulp packages (manual install in the terminal)
