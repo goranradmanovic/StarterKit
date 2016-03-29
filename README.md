@@ -64,6 +64,7 @@ root/
 6. Install imagemin in the project npm install gulp-imagemin --save-dev
 7. Install concat in the project npm install gulp-concat --save-dev
 8. Install uglify in the project npm install gulp-uglify --save-dev
+9. Install plumber in the project npm install gulp-plumber --save-dev
 
 ### Gulp packages (automatic install in the terminal from package.json file)
 
