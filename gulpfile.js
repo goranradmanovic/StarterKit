@@ -90,6 +90,13 @@ gulp.task('copyJS', function () {
 				.pipe(gulp.dest(config.jsDEST));
 });
 
+//Copy data JSON files (Using when working with AngularJs)
+gulp.task('copyData', function () {
+	return gulp.src(config.dataSRC)
+				.pipe(plumber())
+				.pipe(gulp.dest(config.dataDEST));
+});
+
 //Compressing images
 gulp.task('imagemin', function () {
 	return gulp.src(config.imageSRC)

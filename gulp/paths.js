@@ -10,5 +10,7 @@ module.exports = {
 	jsSRC: 'src/js/**/*.js',
 	jsDEST: 'production/assets/js/',
 	imageSRC: 'src/images/*.+(jpg|jpeg|png|gif|ico)',
-	imageDEST: 'production/assets/images/'
+	imageDEST: 'production/assets/images/',
+	dataSRC: 'src/data/**/*.json',
+	dataDEST: 'production/assets';
 };
