@@ -30,7 +30,9 @@ root/
 				*.sass, *.scss
 			2-modules/
 				*.sass, *scss
-			3-layouts/
+			3-sections/
+				*.sass, *.scss
+			4-layouts/
 				*.sass, *.scss
 			style.sass
 		js/
