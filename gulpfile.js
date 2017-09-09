@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),
 	sass = require('gulp-sass'),
 	autoprefix = require('gulp-autoprefixer'),
-	jade = require('gulp-jade'),
+	pug = require('gulp-pug'),
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
 	imagemin = require('gulp-imagemin'),
@@ -27,7 +27,7 @@ function errorLog(error) {
 
 //BrowserSync task
 gulp.task('browser-sync', function () {
-	browserSync.init({proxy: '192.168.1.4'});
+	browserSync.init({proxy: ''}); //!! HERE PUT YOUR IP ADDRES,PORT AND THE NAME OF FOLDER ECT. 127.0.0.1:80/Example !!
 });
 
 //Sass task
@@ -43,32 +43,32 @@ gulp.task('sass', function () {
 });
 
 //Jade task
-gulp.task('jade', ['jade-public','jade-views'], function () {
-	return gulp.src(config.jadeSRC)
+gulp.task('pug', ['pug-public','pug-views'], function () {
+	return gulp.src(config.pugSRC)
 				.pipe(plumber())
-				.pipe(jade({pretty: true}))
+				.pipe(pug({pretty: true}))
 				//.on('error', errorLog) //Output error with out plumber plugi
-				.pipe(gulp.dest(config.jadeDEST))
+				.pipe(gulp.dest(config.pugDEST))
 				.pipe(browserSync.reload({stream: true}));
 });
 
 //Jade public
-gulp.task('jade-public', function () {
-	return gulp.src(config.jadePublicSRC)
+gulp.task('pug-public', function () {
+	return gulp.src(config.pugPublicSRC)
 				.pipe(plumber())
-				.pipe(jade({pretty: true}))
+				.pipe(pug({pretty: true}))
 				//.on('error', errorLog) //Output error with out plumber plugi)
-				.pipe(gulp.dest(config.jadePublicDEST))
+				.pipe(gulp.dest(config.pugPublicDEST))
 				.pipe(browserSync.reload({stream: true}));
 });
 
-//Jade views
-gulp.task('jade-views', ['jade-public'], function () {
-	return gulp.src(config.jadeViewSRC)
+//Pug views
+gulp.task('pug-views', ['pug-public'], function () {
+	return gulp.src(config.pugViewSRC)
 				.pipe(plumber())
-				.pipe(jade({pretty: true}))
+				.pipe(pug({pretty: true}))
 				//.on('error', errorLog) //Output error with out plumber plugi)
-				.pipe(gulp.dest(config.jadeViewDEST))
+				.pipe(gulp.dest(config.pugViewDEST))
 				.pipe(browserSync.reload({stream: true}));
 });
 
@@ -109,13 +109,13 @@ gulp.task('imagemin', function () {
 //Watch task
 gulp.task('watch', function () {
 	gulp.watch(config.sassSRC, ['sass']);
-	gulp.watch(config.jadeSRC, ['jade']);
-	gulp.watch(config.jadePublicSRC, ['jade-public']);
-	gulp.watch(config.jadeViewSRC, ['jade-views']);
+	gulp.watch(config.pugSRC, ['pug']);
+	gulp.watch(config.pugPublicSRC, ['pug-public']);
+	gulp.watch(config.pugViewSRC, ['pug-views']);
 	gulp.watch(config.jsSRC, ['concatJS']);
 	gulp.watch(config.jsSRC, ['copyJS']);
 	gulp.watch(config.dataSRC, ['copyData']);
 });
 
 //Default task
-gulp.task('default', ['sass','jade-public','jade-views','jade','concatJS','watch','browser-sync']);
+gulp.task('default', ['sass','pug-public','pug-views','pug','concatJS','watch','browser-sync']);
