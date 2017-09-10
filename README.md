@@ -10,6 +10,9 @@ root/
 			index.html
 		views/
 			*.html
+		compiled/  -- Output compiled html files
+			**/
+				*.html
 		assets
 			css/
 				style.min.css
@@ -47,14 +50,12 @@ root/
 			*.jpg, *.jpeg, *.png, *.gif, *.ico .ect		
 		templates/
 			includes/
-				*html -- Output compile html files
-			jade/
-				*jade
+				*pug
 			partials/
-				*jade
-			index.jade
+				*pug
+			index.pug
 		views/
-			*jade
+			*pug
 		data/*json
 ```
 
