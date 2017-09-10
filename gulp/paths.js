@@ -1,8 +1,8 @@
 module.exports = {
 	sassSRC: 'src/sass/**/*.+(sass|scss)',
 	cssDEST: 'production/assets/css/',
-	pugSRC: 'src/templates/pug/**/*.pug',
-	pugDEST: 'src/templates/includes/',
+	pugTemplatesSRC: 'src/templates/**/*.pug',
+	pugTemplatesDEST: 'production/compiled',
 	pugPublicSRC: 'src/templates/index.pug',
 	pugPublicDEST: 'production/public/',
 	pugViewSRC: 'src/views/**/*.pug',
