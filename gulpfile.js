@@ -44,11 +44,11 @@ gulp.task('sass', function () {
 
 //Pug task
 gulp.task('pug', ['pug-public','pug-views'], function () {
-	return gulp.src(config.pugSRC)
+	return gulp.src(config.pugTemplatesSRC)
 				.pipe(plumber())
 				.pipe(pug({pretty: true}))
 				//.on('error', errorLog) //Output error with out plumber plugi
-				.pipe(gulp.dest(config.pugDEST))
+				.pipe(gulp.dest(config.pugTemplatesDEST))
 				.pipe(browserSync.reload({stream: true}));
 });
 
