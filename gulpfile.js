@@ -42,7 +42,7 @@ gulp.task('sass', function () {
 				.pipe(browserSync.reload({stream: true}));
 });
 
-//Jade task
+//Pug task
 gulp.task('pug', ['pug-public','pug-views'], function () {
 	return gulp.src(config.pugSRC)
 				.pipe(plumber())
@@ -52,14 +52,13 @@ gulp.task('pug', ['pug-public','pug-views'], function () {
 				.pipe(browserSync.reload({stream: true}));
 });
 
-//Jade public
+//Pug public
 gulp.task('pug-public', function () {
 	return gulp.src(config.pugPublicSRC)
 				.pipe(plumber())
 				.pipe(pug({pretty: true}))
 				//.on('error', errorLog) //Output error with out plumber plugi)
-				.pipe(gulp.dest(config.pugPublicDEST))
-				.pipe(browserSync.reload({stream: true}));
+				.pipe(gulp.dest(config.pugPublicDEST));
 });
 
 //Pug views
@@ -68,8 +67,7 @@ gulp.task('pug-views', ['pug-public'], function () {
 				.pipe(plumber())
 				.pipe(pug({pretty: true}))
 				//.on('error', errorLog) //Output error with out plumber plugi)
-				.pipe(gulp.dest(config.pugViewDEST))
-				.pipe(browserSync.reload({stream: true}));
+				.pipe(gulp.dest(config.pugViewDEST));
 });
 
 //JavaScrip task (concatination & minifying)
@@ -109,7 +107,7 @@ gulp.task('imagemin', function () {
 //Watch task
 gulp.task('watch', function () {
 	gulp.watch(config.sassSRC, ['sass']);
-	gulp.watch(config.pugSRC, ['pug']);
+	gulp.watch(config.pugTemplatesSRC, ['pug']);
 	gulp.watch(config.pugPublicSRC, ['pug-public']);
 	gulp.watch(config.pugViewSRC, ['pug-views']);
 	gulp.watch(config.jsSRC, ['concatJS']);
@@ -118,4 +116,4 @@ gulp.task('watch', function () {
 });
 
 //Default task
-gulp.task('default', ['sass','pug-public','pug-views','pug','concatJS','watch','browser-sync']);
+gulp.task('default', ['sass','pug','concatJS','watch','browser-sync']);
